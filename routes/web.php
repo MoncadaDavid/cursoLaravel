@@ -14,20 +14,19 @@ route::get('products/create', function(){
 
 Route::post('products', function(Request $request){
 
-    //return $request->all(); 
+
      $newProducto = new Product;
      $newProducto->description = $request->input('description');
      $newProducto->price = $request->input('price');
      $newProducto->save();
 
-
-     return redirect()->route('products.index')->with('info','Producto creado Existosamente');
+     return redirect()->route('products.index')->with('info','Producto creado Existosamente para capacitacion');
     })->name('products.store');
 
 
     Route::delete('products/{id}', function($id){
       $product = Product::findOrFail($id);
-      $product->delete(); 
+      $product->delete();
       return redirect()->route('products.index')->with('info', 'Producto Eliminado Exitosamente');
     })->name('products.destroy');
 
@@ -39,7 +38,7 @@ Route::get('products/{id}/edit', function($id){
 
 
 Route::put('/products/{id}', function (Request $request, $id){
- 
+
   $product = Product::findOrFail($id);
   $product->description = $request->input('description');
   $product->price = $request->input('price');
