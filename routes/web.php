@@ -16,6 +16,7 @@ Route::post('products', function(Request $request){
 
 
      $newProducto = new Product;
+     $newProductoNEW = new Product;
      $newProducto->description = $request->input('description');
      $newProducto->price = $request->input('price');
      $newProducto->save();
